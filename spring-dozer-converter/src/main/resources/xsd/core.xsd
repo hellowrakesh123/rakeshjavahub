@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xsd:schema xmlns="http://www.rakeshjavahub.com/schema/beans"
+	targetNamespace="http://www.rakeshjavahub.com/schema/beans"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:version="2.1" xmlns:annox="http://annox.dev.java.net"
+	jaxb:extensionBindingPrefixes="annox"
+	xmlns:sd="http://annox.dev.java.net/org.springframework.data.annotation">
+
+	<xsd:complexType name="person">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:int" />
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="sex" type="xsd:string" />
+			<xsd:element name="email-address" type="xsd:string" />
+			<xsd:element name="age" type="xsd:int" />
+			<xsd:element name="address" type="xsd:string" />
+			<xsd:element name="phone" type="xsd:string" />
+			<xsd:element name="accounts" type="account" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="account">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:int" />
+			<xsd:element name="accountNumber" type="xsd:string" />
+			<xsd:element name="bank" type="xsd:string" />
+			<xsd:element name="type" type="account-type" />
+			<xsd:element name="balance" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="account-type">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PERSONAL" />
+			<xsd:enumeration value="CORPORATE" />
+			<xsd:enumeration value="SAVINGS" />
+			<xsd:enumeration value="CHECKING" />
+			<xsd:enumeration value="LOANS" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>
